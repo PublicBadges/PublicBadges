@@ -30,20 +30,20 @@ const server = new ApolloServer({
   context,
   introspection: true,
   playground: {
-    endpoint: `/${environment}/graphql`,
+    endpoint: `/graphql`,
     tabs: [
       {
-        endpoint: `/${environment}/graphql`,
+        endpoint: `/graphql`,
         name: "Approve Organization",
         query: approveOrganization,
       },
       {
-        endpoint: `/${environment}/graphql`,
+        endpoint: `/graphql`,
         name: "Apply for Badge",
         query: applyForBadge,
       },
       {
-        endpoint: `/${environment}/graphql`,
+        endpoint: `/graphql`,
         name: "Register Organization",
         query: registerOrganization,
       },

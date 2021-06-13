@@ -67,6 +67,7 @@
     "packages/graphql-schema",
     "packages/types",
     "packages/stores",
-    "packages/adapters"
+    "packages/adapters",
+    "packages/badge"
   ]
 }

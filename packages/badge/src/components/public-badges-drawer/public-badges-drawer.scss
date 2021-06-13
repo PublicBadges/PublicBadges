@@ -1,0 +1,18 @@
+// --badge-color: #3C3C3C;
+// --modal-color-bg: #FFFFFF;
+// --modal-color-fg: #3C3C3C;
+
+:host {
+  display: block;
+  //display: inline-block;
+  //contain: content;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  min-width: 90px;
+  min-height: 90px;
+
+  * {
+    box-sizing: border-box;
+  }
+}

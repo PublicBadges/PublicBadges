@@ -1,0 +1,15 @@
+query GetAllBadges($domainName: URL!) {
+  getAllBadges(domainName: "https://example.org/") {
+    badgeId
+    name
+    description
+    status
+    ... on SignedPublicBadge {
+      evidence {
+        proofId
+        name
+        description
+      }
+    }
+  }
+}
