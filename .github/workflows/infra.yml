@@ -8,13 +8,6 @@ on:
   pull_request:
 
 jobs:
-  steps:
-    - name: Set branch-based environment variables
-      uses: iamtheyammer/branch-env-vars@...
-      with:
-        WORKSPACE: |
-          stable: 'production'
-          master: 'dev'
   infra:
     name: "Deploy Infra"
     runs-on: ubuntu-latest
@@ -24,8 +17,13 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Set branch-based environment variables
+        uses: iamtheyammer/branch-env-vars@...
+        with:
+          WORKSPACE: |
+            stable: 'production'
+            master: 'dev'
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
@@ -59,6 +57,12 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       SLS_ENVIRONMENT: ${{ env.WORKSPACE }}
     steps:
+    steps:
+      - uses: iamtheyammer/branch-env-vars@...
+        with:
+          WORKSPACE: |
+            stable: 'production'
+            master: 'dev'
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
