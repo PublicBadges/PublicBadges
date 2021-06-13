@@ -8,12 +8,13 @@ on:
   pull_request:
 
 jobs:
-  - name: Set branch-based environment variables
-    uses: iamtheyammer/branch-env-vars@...
-    with:
-      WORKSPACE: |
-        stable: 'production'
-        master: 'dev'
+  steps:
+    - name: Set branch-based environment variables
+      uses: iamtheyammer/branch-env-vars@...
+      with:
+        WORKSPACE: |
+          stable: 'production'
+          master: 'dev'
   infra:
     name: "Deploy Infra"
     runs-on: ubuntu-latest
