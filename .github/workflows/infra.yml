@@ -15,8 +15,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Set branch-based environment variables
-        uses: iamtheyammer/branch-env-vars@...
+      - uses: iamtheyammer/branch-env-vars@v1.0.3
         with:
           TF_WORKSPACE: |
             stable: 'production'
@@ -54,7 +53,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - uses: iamtheyammer/branch-env-vars@...
+      - uses: iamtheyammer/branch-env-vars@v1.0.3
         with:
           SLS_ENVIRONMENT: |
             stable: 'production'
