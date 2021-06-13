@@ -7,9 +7,9 @@
 - [ ] Pick a release date
 - [ ] Communication/Dissemination Strategy
 - [x] Onboarding Strategy
-- [ ] Non-technical Documentation
+- [x] Non-technical Documentation
       - [x] README.md
-- [ ] Privacy Policies
+- [ ] Privacy Policy
 - [ ] Write/Update Email Templates
       - [x] approved_organizaton_registration.md
       - [ ] badge_application_status_changed.md
@@ -19,7 +19,7 @@
 
 ### Offcourse
 
-- [ ] Finalize Technical Documentation
+- [ ] Finalize Documentation and Email Templates
 - [ ] Deploy Final Environment
 - [ ] Lock Down AWS Privileges
 
@@ -28,6 +28,6 @@
 - [ ] Point DNS to New Environment
       api.publicspaces.net => ...
       badges.publicspaces.net => CNAME: publicbadges.github.io
-- [ ] Move the Frontend Component to New Github Organization / Repo
+- [x] Move the Frontend Component to New Github Organization / Repo
       directory: packages/badge/
 - [ ] Migrate Frontend to New Environment

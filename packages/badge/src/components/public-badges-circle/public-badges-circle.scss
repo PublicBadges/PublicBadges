@@ -1,0 +1,68 @@
+svg {
+  all: initial;
+
+  &.interactive {
+    cursor: pointer;
+  }
+}
+
+.logo {
+  fill: var(--badge-color);
+
+  #modal & {
+    fill: var(--modal-color-fg);
+  }
+}
+
+
+.circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  fill: none;
+  stroke: var(--badge-color);
+  stroke-width: 2;
+  transition: transform 300ms ease;
+  transform: rotate(-90deg);
+
+  #modal & {
+    stroke: var(--modal-color-fg);
+  }
+}
+.interactive:hover .circle {
+  transform: rotate(-100deg);
+}
+
+
+.badges circle {
+  fill: var(--badge-color);
+  stroke: var(--badge-color);
+  stroke-width: 0;
+  transition: stroke-width 400ms ease, transform 400ms ease, opacity 200ms ease;
+  transform-origin: 50% 50%;
+  opacity: 1;
+}
+.interactive:hover .badges circle {
+  stroke-width: 10;
+  transform: translate(0, 100px) !important;
+  opacity: 0;
+}
+
+.info {
+  fill: var(--badge-color);
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.interactive:hover .info {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+text.test-mode {
+  fill: #E1231E;
+  stroke: #FFF;
+  stroke-width: 1px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: sans-serif;
+}
