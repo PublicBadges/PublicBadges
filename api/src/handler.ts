@@ -4,6 +4,7 @@ import typeDefs from "@public-badges/graphql-schema";
 import context from "./context";
 
 const environment = process.env.SLS_ENVIRONMENT;
+
 const approveOrganization = `mutation ApproveOrganization($input: OrganizationValidation!) {
   approveOrganization(input: $input) {
     domainName
@@ -30,20 +31,20 @@ const server = new ApolloServer({
   context,
   introspection: true,
   playground: {
-    endpoint: `/graphql`,
+    endpoint: `/${environment}/graphql`,
     tabs: [
       {
-        endpoint: `/graphql`,
+        endpoint: `/${environment}/graphql`,
         name: "Approve Organization",
         query: approveOrganization,
       },
       {
-        endpoint: `/graphql`,
+        endpoint: `/${environment}/graphql`,
         name: "Apply for Badge",
         query: applyForBadge,
       },
       {
-        endpoint: `/graphql`,
+        endpoint: `/${environment}/graphql`,
         name: "Register Organization",
         query: registerOrganization,
       },
