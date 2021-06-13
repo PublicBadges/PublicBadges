@@ -18,4 +18,5 @@ locals {
   name = "badges"
   role = "${var.project_prefix}-${local.name}-role-${var.environment_name}"
   parameter_prefix="/${var.project_prefix}/${var.environment_name}/${local.name}"
+  template_prefix = "${var.project_prefix}-${local.name}-${var.environment_name}"
 }
