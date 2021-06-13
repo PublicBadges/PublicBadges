@@ -24,6 +24,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_version: 1.0.0
       - name: Install Dependencies
         run: npm install -g add remark-cli remark-html
       - name: Make Output Dir form Email Templates
@@ -32,10 +37,6 @@ jobs:
         run: remark emailTemplates/*.md -o emailTemplates/compiled/
       - name: Render Email Templates to HTML
         run: remark emailTemplates/*.md --use html -o emailTemplates/compiled/
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: Terraform Init
         run: terraform init
       - name: Terraform Format
