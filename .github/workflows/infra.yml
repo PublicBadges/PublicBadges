@@ -18,8 +18,8 @@ jobs:
       - uses: iamtheyammer/branch-env-vars@v1.0.3
         with:
           TF_WORKSPACE: |
-            stable: 'production'
-            master: 'dev'
+            stable:production
+            master:dev
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
