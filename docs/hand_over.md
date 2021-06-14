@@ -18,13 +18,8 @@
 - [ ] Communication/Dissemination Strategy
 - [x] Onboarding Strategy
 - [x] Non-technical Documentation
-      - [x] README.md
 - [x] Privacy Policy
 - [x] Write/Update Email Templates
-      - [x] approved_organizaton_registration.md
-      - [x] badge_application_status_changed.md
-      - [x] organization_approval_requested.md
-      - [x] pending_organization_registration.md
 - [ ] Finalize Documentation and Email Templates
 
 ### Offcourse
