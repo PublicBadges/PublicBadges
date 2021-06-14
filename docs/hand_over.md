@@ -9,8 +9,8 @@
       badges.publicspaces.net => CNAME: publicbadges.github.io
 - [x] Move the Frontend Component to New Github Organization / Repo
       directory: packages/badge/
+- [ ] Migrate/Update Frontend Code to New Production Environment
 - [ ] Move the NPM package to a PublicBadges organization (NPM)
-- [ ] Migrate Frontend to New Environment
 
 ### PublicSpaces
 
