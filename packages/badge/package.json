@@ -17,6 +17,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "np": {
+    "branch": "frontend-npm-build",
+    "2fa": false
+  },
   "scripts": {
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
