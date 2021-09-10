@@ -10,7 +10,7 @@
 | Property      | Attribute  | Description | Type                    | Default                                               |
 | ------------- | ---------- | ----------- | ----------------------- | ----------------------------------------------------- |
 | `badges`      | --         |             | `ApprovedPublicBadge[]` | `[]`                                                  |
-| `language`    | `language` |             | `"EN" or "NL"`          | `"EN"`                                                |
+| `language`    | `language` |             | `"EN" \| "NL"`          | `"EN"`                                                |
 | `positioning` | --         |             | `ModalPositioning`      | `{ orientation: "vertical", left: 0, origin: "top" }` |
 | `theme`       | `theme`    |             | `string`                | `""`                                                  |
 

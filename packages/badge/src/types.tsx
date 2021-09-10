@@ -21,79 +21,75 @@ export type Scalars = {
   Upload: any;
 };
 
-
 export type ApprovedOrganization = Organization & {
   __typename?: 'ApprovedOrganization';
-  organizationId: Scalars['GUID'];
-  status: OrganizationStatus;
-  name: Scalars['String'];
-  contact: Contact;
   admin: Contact;
   approvedBy: Scalars['EmailAddress'];
   approvedOn: Scalars['String'];
+  contact: Contact;
   domainName: Scalars['URL'];
+  name: Scalars['String'];
+  organizationId: Scalars['GUID'];
+  status: OrganizationStatus;
   urls?: Maybe<Array<Maybe<Scalars['URL']>>>;
 };
 
 export type ApprovedPublicBadge = PublicBadge & {
   __typename?: 'ApprovedPublicBadge';
   badgeId: Scalars['GUID'];
-  status: PublicBadgeStatus;
-  valueCaseId: Scalars['ID'];
-  valueCase: ValueCase;
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   description: Scalars['String'];
-  narrative: Scalars['String'];
-  recipientId: Scalars['ID'];
   evidence: Array<Proof>;
+  name: Scalars['String'];
+  narrative: Scalars['String'];
   recipient: ApprovedOrganization;
+  recipientId: Scalars['ID'];
+  status: PublicBadgeStatus;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCase: ValueCase;
+  valueCaseId: Scalars['ID'];
 };
 
 export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
+  Private = 'PRIVATE',
+  Public = 'PUBLIC'
 }
 
 export type Contact = {
   __typename?: 'Contact';
-  name: Scalars['String'];
   email: Scalars['EmailAddress'];
+  name: Scalars['String'];
 };
 
 export type ContactInput = {
-  name: Scalars['String'];
   email: Scalars['EmailAddress'];
+  name: Scalars['String'];
 };
-
-
 
 export type Issuer = {
   __typename?: 'Issuer';
-  issuerId: Scalars['URL'];
-  type?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
   email: Scalars['EmailAddress'];
+  issuerId: Scalars['URL'];
+  name?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
-
 export enum Language {
-  Nl = 'NL',
+  De = 'DE',
   En = 'EN',
-  De = 'DE'
+  Nl = 'NL'
 }
 
 export type Localization = {
   __typename?: 'Localization';
-  NL?: Maybe<ValueCaseLocalization>;
   DE?: Maybe<ValueCaseLocalization>;
+  NL?: Maybe<ValueCaseLocalization>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
   applyForBadge?: Maybe<PublicBadge>;
-  registerOrganization?: Maybe<PendingOrganization>;
   approveOrganization?: Maybe<ApprovedOrganization>;
+  registerOrganization?: Maybe<PendingOrganization>;
 };
 
 
@@ -102,38 +98,38 @@ export type MutationApplyForBadgeArgs = {
 };
 
 
-export type MutationRegisterOrganizationArgs = {
-  input: OrganizationInput;
-};
-
-
 export type MutationApproveOrganizationArgs = {
   input: OrganizationValidation;
 };
 
+
+export type MutationRegisterOrganizationArgs = {
+  input: OrganizationInput;
+};
+
 export type OpenBadge = {
   __typename?: 'OpenBadge';
-  id: Scalars['String'];
   badge: OpenBadgeClass;
-  recipient: OpenBadgeRecipient;
-  issuedOn: Scalars['String'];
-  expires: Scalars['String'];
   evidence: Array<Maybe<OpenBadgeProof>>;
+  expires: Scalars['String'];
+  id: Scalars['String'];
+  issuedOn: Scalars['String'];
+  recipient: OpenBadgeRecipient;
 };
 
 export type OpenBadgeArtifact = {
   __typename?: 'OpenBadgeArtifact';
-  signature: Scalars['String'];
   json: Scalars['JSON'];
+  signature: Scalars['String'];
 };
 
 export type OpenBadgeClass = {
   __typename?: 'OpenBadgeClass';
+  criteria: OpenBadgeCriteria;
+  description: Scalars['String'];
   id: Scalars['String'];
   name: Scalars['String'];
   tags: Array<Maybe<Scalars['String']>>;
-  description: Scalars['String'];
-  criteria: OpenBadgeCriteria;
 };
 
 export type OpenBadgeCriteria = {
@@ -143,10 +139,10 @@ export type OpenBadgeCriteria = {
 
 export type OpenBadgeProof = {
   __typename?: 'OpenBadgeProof';
+  description: Scalars['String'];
+  genre: Scalars['String'];
   id: Scalars['String'];
   name: Scalars['String'];
-  genre: Scalars['String'];
-  description: Scalars['String'];
   narrative: Scalars['String'];
 };
 
@@ -157,91 +153,91 @@ export type OpenBadgeRecipient = {
 };
 
 export type Organization = {
+  admin: Contact;
+  contact: Contact;
+  domainName: Scalars['URL'];
+  name: Scalars['String'];
   organizationId: Scalars['GUID'];
   status: OrganizationStatus;
-  name: Scalars['String'];
-  contact: Contact;
-  admin: Contact;
-  domainName: Scalars['URL'];
   urls?: Maybe<Array<Maybe<Scalars['URL']>>>;
 };
 
 export type OrganizationInput = {
-  name: Scalars['String'];
-  contact: ContactInput;
   admin: ContactInput;
+  contact: ContactInput;
   domainName: Scalars['URL'];
+  name: Scalars['String'];
 };
 
 export enum OrganizationStatus {
-  Pending = 'PENDING',
-  Approved = 'APPROVED'
+  Approved = 'APPROVED',
+  Pending = 'PENDING'
 }
 
 export type OrganizationValidation = {
-  organizationId: Scalars['GUID'];
-  approver: Scalars['EmailAddress'];
   approvalToken: Scalars['GUID'];
+  approver: Scalars['EmailAddress'];
+  organizationId: Scalars['GUID'];
 };
 
 export type PendingOrganization = Organization & {
   __typename?: 'PendingOrganization';
-  organizationId: Scalars['GUID'];
-  approvalToken?: Maybe<Scalars['GUID']>;
-  status: OrganizationStatus;
-  name: Scalars['String'];
-  contact: Contact;
   admin: Contact;
+  approvalToken?: Maybe<Scalars['GUID']>;
+  contact: Contact;
   domainName: Scalars['URL'];
+  name: Scalars['String'];
+  organizationId: Scalars['GUID'];
+  status: OrganizationStatus;
   urls?: Maybe<Array<Maybe<Scalars['URL']>>>;
 };
 
 export type PendingPublicBadge = PublicBadge & {
   __typename?: 'PendingPublicBadge';
   badgeId: Scalars['GUID'];
-  status: PublicBadgeStatus;
-  valueCaseId: Scalars['ID'];
-  valueCase: ValueCase;
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   description: Scalars['String'];
+  name: Scalars['String'];
   narrative: Scalars['String'];
-  recipientId: Scalars['ID'];
   recipient: ApprovedOrganization;
+  recipientId: Scalars['ID'];
+  status: PublicBadgeStatus;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCase: ValueCase;
+  valueCaseId: Scalars['ID'];
 };
 
 export type Proof = {
   __typename?: 'Proof';
-  proofId: Scalars['GUID'];
+  description: Scalars['String'];
   genre: Scalars['String'];
   name: Scalars['String'];
-  description: Scalars['String'];
   narrative: Array<Scalars['String']>;
+  proofId: Scalars['GUID'];
 };
 
 export type PublicBadge = {
   badgeId: Scalars['GUID'];
-  status: PublicBadgeStatus;
-  valueCaseId: Scalars['ID'];
-  valueCase: ValueCase;
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   description: Scalars['String'];
+  name: Scalars['String'];
   narrative: Scalars['String'];
-  recipientId: Scalars['ID'];
   recipient: ApprovedOrganization;
+  recipientId: Scalars['ID'];
+  status: PublicBadgeStatus;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCase: ValueCase;
+  valueCaseId: Scalars['ID'];
 };
 
 export type PublicBadgeInput = {
-  valueCaseId: Scalars['ID'];
   domainName: Scalars['URL'];
+  valueCaseId: Scalars['ID'];
 };
 
 export enum PublicBadgeStatus {
-  Pending = 'PENDING',
   Approved = 'APPROVED',
-  Signed = 'SIGNED',
-  Rejected = 'REJECTED'
+  Pending = 'PENDING',
+  Rejected = 'REJECTED',
+  Signed = 'SIGNED'
 }
 
 export type Query = {
@@ -258,23 +254,23 @@ export type QueryGetAllBadgesArgs = {
 
 
 export type QueryGetValueCaseArgs = {
-  valueCaseId: Scalars['GUID'];
   language?: Maybe<Language>;
+  valueCaseId: Scalars['GUID'];
 };
 
 export type RejectedPublicBadge = PublicBadge & {
   __typename?: 'RejectedPublicBadge';
   badgeId: Scalars['GUID'];
-  status: PublicBadgeStatus;
-  valueCaseId: Scalars['ID'];
-  valueCase: ValueCase;
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   description: Scalars['String'];
-  narrative: Scalars['String'];
-  recipientId: Scalars['ID'];
   evidence: Array<Proof>;
+  name: Scalars['String'];
+  narrative: Scalars['String'];
   recipient: ApprovedOrganization;
+  recipientId: Scalars['ID'];
+  status: PublicBadgeStatus;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCase: ValueCase;
+  valueCaseId: Scalars['ID'];
 };
 
 export type Scenario = {
@@ -285,53 +281,51 @@ export type Scenario = {
 
 export type SignedPublicBadge = PublicBadge & {
   __typename?: 'SignedPublicBadge';
-  badgeId: Scalars['GUID'];
-  status: PublicBadgeStatus;
-  valueCaseId: Scalars['ID'];
-  valueCase: ValueCase;
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
-  description: Scalars['String'];
-  narrative: Scalars['String'];
-  recipientId: Scalars['ID'];
-  evidence: Array<Proof>;
-  issuedOn: Scalars['String'];
-  expires: Scalars['String'];
   artifact: OpenBadgeArtifact;
+  badgeId: Scalars['GUID'];
+  description: Scalars['String'];
+  evidence: Array<Proof>;
+  expires: Scalars['String'];
+  issuedOn: Scalars['String'];
+  name: Scalars['String'];
+  narrative: Scalars['String'];
   recipient: ApprovedOrganization;
+  recipientId: Scalars['ID'];
+  status: PublicBadgeStatus;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCase: ValueCase;
+  valueCaseId: Scalars['ID'];
 };
-
-
 
 export type ValueCase = {
   __typename?: 'ValueCase';
-  valueCaseId: Scalars['GUID'];
-  image: Scalars['URL'];
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
-  proposedBy: Organization;
   approvedBy: Scalars['String'];
   description: Scalars['String'];
-  narrative: Scalars['String'];
-  scenarios: Array<Scenario>;
+  image: Scalars['URL'];
   localization?: Maybe<Localization>;
+  name: Scalars['String'];
+  narrative: Scalars['String'];
+  proposedBy: Organization;
+  scenarios: Array<Scenario>;
+  tags: Array<Maybe<Scalars['String']>>;
+  valueCaseId: Scalars['GUID'];
 };
 
 export type ValueCaseInput = {
+  description: Scalars['String'];
   domainName: Scalars['URL'];
   name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   narrative: Scalars['String'];
-  description: Scalars['String'];
+  tags: Array<Maybe<Scalars['String']>>;
 };
 
 export type ValueCaseLocalization = {
   __typename?: 'ValueCaseLocalization';
-  name: Scalars['String'];
-  tags: Array<Maybe<Scalars['String']>>;
   description: Scalars['String'];
+  name: Scalars['String'];
   narrative: Scalars['String'];
   scenarios: Array<Scenario>;
+  tags: Array<Maybe<Scalars['String']>>;
 };
 
 export type GetAllBadgesQueryVariables = Exact<{
@@ -339,23 +333,4 @@ export type GetAllBadgesQueryVariables = Exact<{
 }>;
 
 
-export type GetAllBadgesQuery = (
-  { __typename?: 'Query' }
-  & { getAllBadges?: Maybe<Array<Maybe<(
-    { __typename?: 'ApprovedPublicBadge' }
-    & Pick<ApprovedPublicBadge, 'badgeId' | 'name' | 'description' | 'status'>
-  ) | (
-    { __typename?: 'PendingPublicBadge' }
-    & Pick<PendingPublicBadge, 'badgeId' | 'name' | 'description' | 'status'>
-  ) | (
-    { __typename?: 'RejectedPublicBadge' }
-    & Pick<RejectedPublicBadge, 'badgeId' | 'name' | 'description' | 'status'>
-  ) | (
-    { __typename?: 'SignedPublicBadge' }
-    & Pick<SignedPublicBadge, 'badgeId' | 'name' | 'description' | 'status'>
-    & { evidence: Array<(
-      { __typename?: 'Proof' }
-      & Pick<Proof, 'proofId' | 'name' | 'description'>
-    )> }
-  )>>> }
-);
+export type GetAllBadgesQuery = { __typename?: 'Query', getAllBadges?: Maybe<Array<Maybe<{ __typename?: 'ApprovedPublicBadge', badgeId: any, name: string, description: string, status: PublicBadgeStatus } | { __typename?: 'PendingPublicBadge', badgeId: any, name: string, description: string, status: PublicBadgeStatus } | { __typename?: 'RejectedPublicBadge', badgeId: any, name: string, description: string, status: PublicBadgeStatus } | { __typename?: 'SignedPublicBadge', badgeId: any, name: string, description: string, status: PublicBadgeStatus, evidence: Array<{ __typename?: 'Proof', proofId: any, name: string, description: string }> }>>> };
