@@ -1,15 +1,15 @@
 {
   "name": "@publicbadges/badge",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Stencil Component Starter",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/index.cjs.js",
+  "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
+  "types": "/dist/types/components.d.ts",
+  "unpkg": "dist/ionic/ionic.js",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/public-badges-drawer/public-badges-drawer.js",
+  "collection": "dist/collection/collection-manifest.json",
   "files": [
     "dist/",
     "loader/"

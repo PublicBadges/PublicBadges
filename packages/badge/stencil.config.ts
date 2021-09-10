@@ -11,6 +11,9 @@ export const config: Config = {
   ],
   outputTargets: [
     {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
       type: 'dist',
       esmLoaderPath: '../loader'
     },
