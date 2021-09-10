@@ -41,7 +41,7 @@ export class PublicbadgesDrawer {
     // fetch badges
     const domainName: string = this.testMode ? this.testDomain : window.location.origin
 
-    fetch('https://api.publicbadges.com/pilot/graphql', {
+    fetch('https://69lihfgrc8.execute-api.eu-west-1.amazonaws.com/prod/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: `{ getAllBadges(domainName: "${domainName}", language: ${this.language}) { badgeId name description status ...on SignedPublicBadge { evidence { proofId name description } } } }` }),
