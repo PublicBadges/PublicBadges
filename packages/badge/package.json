@@ -22,7 +22,7 @@
     "2fa": false
   },
   "scripts": {
-    "release": "npm np",
+    "release": "npm run np",
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
     "build": "stencil build --docs",
