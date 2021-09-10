@@ -1,6 +1,6 @@
 {
   "name": "@publicbadges/badge",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,7 +22,7 @@
     "2fa": false
   },
   "scripts": {
-    "release": "np",
+    "release": "yarn np",
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
     "build": "stencil build --docs",
