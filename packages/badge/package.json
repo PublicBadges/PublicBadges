@@ -10,14 +10,17 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/public-badges-drawer/public-badges-drawer.js",
-  "files": ["dist/", "loader/"],
+  "files": [
+    "dist/",
+    "loader/"
+  ],
   "scripts": {
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
     "build": "stencil build --docs",
     "prestart": "yarn codegen",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
+    "test": "",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
