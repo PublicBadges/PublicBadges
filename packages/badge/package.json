@@ -22,6 +22,7 @@
     "2fa": false
   },
   "scripts": {
+    "release": "yarn np",
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
     "build": "stencil build --docs",
@@ -38,7 +39,8 @@
     "@graphql-codegen/typescript-stencil-apollo": "^1.18.5",
     "@stencil/core": "2.6.0",
     "@stencil/sass": "^1.4.1",
-    "auto-bind": "^4.0.0"
+    "auto-bind": "^4.0.0",
+    "np": "^7.5.0"
   },
   "license": "MIT",
   "dependencies": {
