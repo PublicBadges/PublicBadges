@@ -65,13 +65,16 @@ export class PublicbadgesDrawer {
     }
     if(!this.fontLoaded) {
       addFont("https://fonts.publicbadges.com/");
+      this.fontLoaded = true;
     }
     this.isOpen = true;
   };
 
   public handleMouseEnter = () => {
-    addFont("https://fonts.publicbadges.com/");
-    this.fontLoaded = true;
+    if(!this.fontLoaded) {
+      addFont("https://fonts.publicbadges.com/");
+      this.fontLoaded = true;
+    }
   }
 
   @Listen('keydown', { target: 'window' })
