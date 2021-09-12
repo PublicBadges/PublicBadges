@@ -9,6 +9,7 @@ export const config: Config = {
   bundles: [
     { components: ['publicbadges-drawer', 'publicbadges-circle', 'publicbadges-modal'] }
   ],
+  buildEs5: true,
   outputTargets: [
     {
       type: 'dist-custom-elements-bundle',

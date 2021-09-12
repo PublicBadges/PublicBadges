@@ -102,10 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 # Local .terraform directories
 **/.terraform/*
 
@@ -145,3 +142,6 @@ terraform.rco
 /dist
 graphql.schema.json
 /emailTemplates/compiled/*
+
+
+packages/badge/www/*
