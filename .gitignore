@@ -144,4 +144,5 @@ graphql.schema.json
 /emailTemplates/compiled/*
 
 
-packages/badge/www/*
+packages/badge/www
+packages/badge/www/index.html
