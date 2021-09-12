@@ -12,13 +12,14 @@ import { changeEvidenceTexts, calculateModalPositioning, addFont } from "../../u
 
 export class PublicbadgesDrawer {
   @Element() public el: HTMLElement | undefined;
-
+  
   @Prop() public badgeColor: string = "#3C3C3C";
   @Prop() public modalTheme: "dark" | "light" = "light";
   @Prop() public language: "EN" | "NL" = "EN";
   @Prop() public testMode: boolean = false;
   @Prop() public testDomain: string = "https://example.org";
 
+  @State() public fontLoaded: boolean = false;
   @State() public badges: ApprovedPublicBadge[] | undefined;
   @State() public isOpen: boolean = false;
   @State() public modalPositioning: ModalPositioning = { orientation: "vertical", left: 0, origin: "top" };
@@ -35,8 +36,6 @@ export class PublicbadgesDrawer {
       this.el.style.setProperty("--modal-color-fg", modalColorFg);
     }
 
-    // add font/css
-    addFont("https://fonts.publicbadges.com/");
 
     // fetch badges
     const domainName: string = this.testMode ? this.testDomain : window.location.origin
@@ -64,9 +63,16 @@ export class PublicbadgesDrawer {
     if(this.el) {
       this.modalPositioning = calculateModalPositioning(this.el);
     }
-
+    if(!this.fontLoaded) {
+      addFont("https://fonts.publicbadges.com/");
+    }
     this.isOpen = true;
   };
+
+  public handleMouseEnter = () => {
+    addFont("https://fonts.publicbadges.com/");
+    this.fontLoaded = true;
+  }
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(ev: KeyboardEvent){
@@ -92,7 +98,7 @@ export class PublicbadgesDrawer {
   public render() {
     if(this.badges) {
       return (
-        <Host style={{ zIndex: this.isOpen ? "9999" : "1" }}>
+        <Host style={{ zIndex: this.isOpen ? "9999" : "1" }} onMouseEnter={()=>{ this.handleMouseEnter() }}>
           <publicbadges-circle
             badgesCount={this.badges?.length}
             interactive={this.isOpen ? false : true}

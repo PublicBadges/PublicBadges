@@ -20,9 +20,10 @@ export class PublicbadgesModal {
 
   @State() public openBadge: number | null = null
 
-  @Event() public closeDrawer: EventEmitter = ({
-    emit: (e) => e
-  });
+  @Event() closeDrawer!: EventEmitter;
+  closeDrawerHandler() {
+    this.closeDrawer.emit(false);
+  }
 
   public componentDidLoad() {
     if(this.positioning.orientation === "vertical") {
@@ -31,7 +32,6 @@ export class PublicbadgesModal {
   }
 
   public closeModalHandler = () => {
-    console.log('click')
     this.closeDrawer.emit();
   }
 
