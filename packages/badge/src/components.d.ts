@@ -14,7 +14,9 @@ export namespace Components {
         "testMode": boolean;
     }
     interface PublicbadgesDrawer {
+        "apiEndpoint": string;
         "badgeColor": string;
+        "fontEndpoint": string;
         "language": "EN" | "NL";
         "modalTheme": "dark" | "light";
         "testDomain": string;
@@ -59,7 +61,9 @@ declare namespace LocalJSX {
         "testMode"?: boolean;
     }
     interface PublicbadgesDrawer {
+        "apiEndpoint"?: string;
         "badgeColor"?: string;
+        "fontEndpoint"?: string;
         "language"?: "EN" | "NL";
         "modalTheme"?: "dark" | "light";
         "testDomain"?: string;

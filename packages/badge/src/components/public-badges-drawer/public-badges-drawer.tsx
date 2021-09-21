@@ -12,7 +12,10 @@ import { changeEvidenceTexts, calculateModalPositioning, addFont } from "../../u
 
 export class PublicbadgesDrawer {
   @Element() public el: HTMLElement | undefined;
-  
+
+  @Prop() public apiEndpoint: string = "https://69lihfgrc8.execute-api.eu-west-1.amazonaws.com/prod/graphql";
+  @Prop() public fontEndpoint: string = "https://assets.publicspaces.net/@publicbadges/font/";
+
   @Prop() public badgeColor: string = "#3C3C3C";
   @Prop() public modalTheme: "dark" | "light" = "light";
   @Prop() public language: "EN" | "NL" = "EN";
@@ -40,7 +43,7 @@ export class PublicbadgesDrawer {
     // fetch badges
     const domainName: string = this.testMode ? this.testDomain : window.location.origin
 
-    fetch('https://69lihfgrc8.execute-api.eu-west-1.amazonaws.com/prod/graphql', {
+    fetch(this.apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: `{ getAllBadges(domainName: "${domainName}", language: ${this.language}) { badgeId name description status ...on SignedPublicBadge { evidence { proofId name description } } } }` }),
@@ -64,7 +67,7 @@ export class PublicbadgesDrawer {
       this.modalPositioning = calculateModalPositioning(this.el);
     }
     if(!this.fontLoaded) {
-      addFont("https://fonts.publicbadges.com/");
+      addFont(this.fontEndpoint);
       this.fontLoaded = true;
     }
     this.isOpen = true;
@@ -72,7 +75,7 @@ export class PublicbadgesDrawer {
 
   public handleMouseEnter = () => {
     if(!this.fontLoaded) {
-      addFont("https://fonts.publicbadges.com/");
+      addFont(this.fontEndpoint);
       this.fontLoaded = true;
     }
   }
