@@ -1,12 +1,12 @@
 import {
   PublicBadgesEventType as EV,
   PublicBadgesHandler,
-  BadgeInstanceUpdated,
+  OpenBadgeArtifactSigned,
 } from "@public-badges/types";
 import { capitalize } from "voca";
 import { email } from "@public-badges/adapters";
 
-export type InputEvent = BadgeInstanceUpdated;
+export type InputEvent = OpenBadgeArtifactSigned;
 export type OutputEvent = null;
 
 const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
@@ -16,14 +16,15 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   const approverEmail = process.env.APPROVER_EMAIL;
   console.log(detail);
   const { name, status } = detail;
+  const { STATUS_CHANGED_TEMPLATE } = process.env;
   const badgeName = capitalize(name);
   const organizationName = capitalize(detail.name);
   switch (detailType) {
-    case EV.BADGE_INSTANCE_UPDATED: {
+    case EV.OPEN_BADGES_ARTIFACT_SIGNED: {
       await email.sendTemplate({
         recipients: [approverEmail],
         sender: approverEmail,
-        templateName: process.env.STATUS_CHANGED_TEMPLATE,
+        templateName: STATUS_CHANGED_TEMPLATE,
         templateData: {
           displayName: organizationName,
           badgeName,
