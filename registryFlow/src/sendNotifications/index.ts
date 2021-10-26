@@ -23,11 +23,8 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   const sender = approverEmail;
   const organizationName = capitalize(detail.name);
 
-  const {
-    APPROVAL_REQUESTED_TEMPLATE,
-    PENDING_REGISTRATION_TEMPLATE,
-    APPROVED_REGISTRATION_TEMPLATE,
-  } = process.env;
+  const { APPROVAL_REQUESTED_TEMPLATE, APPROVED_REGISTRATION_TEMPLATE } =
+    process.env;
 
   switch (detailType) {
     case EV.ORGANIZATION_APPROVAL_REQUESTED: {
@@ -49,14 +46,6 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
           adminName: detail.admin.name,
           adminEmail: detail.admin.email,
           params,
-        },
-      });
-      await email.sendTemplate({
-        recipients: [detail.contact.email, detail.admin.email],
-        sender,
-        templateName: PENDING_REGISTRATION_TEMPLATE,
-        templateData: {
-          displayName: organizationName,
         },
       });
       return null;
