@@ -31,6 +31,7 @@ export class PublicbadgesModal {
   }
 
   public closeModalHandler = () => {
+    console.log('click')
     this.closeDrawer.emit();
   }
 

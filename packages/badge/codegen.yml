@@ -1,4 +1,4 @@
-schema: https://api.publicbadges.com/pilot/graphql
+schema: https://69lihfgrc8.execute-api.eu-west-1.amazonaws.com/prod/graphql
 documents: src/graphql/**/*.graphql
 generates:
   ./src/types.tsx:

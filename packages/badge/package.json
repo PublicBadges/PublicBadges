@@ -1,6 +1,6 @@
 {
-  "name": "@public-badges/badge",
-  "version": "0.1.3",
+  "name": "@publicbadges/badge",
+  "version": "0.0.4",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,14 +10,20 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/public-badges-drawer/public-badges-drawer.js",
-  "files": ["dist/", "loader/"],
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "codegen": "graphql-codegen",
     "prebuild": "yarn codegen",
     "build": "stencil build --docs",
     "prestart": "yarn codegen",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
+    "test": "",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
