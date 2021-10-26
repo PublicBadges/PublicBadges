@@ -7,14 +7,15 @@ import {
   PublicBadgesEventType,
 } from "@public-badges/types";
 
-const {ORGANIZATION_APPROVAL_ACCEPTED} = PublicBadgesEventType;
+const { ORGANIZATION_APPROVAL_ACCEPTED } = PublicBadgesEventType;
 const approveOrganization: MutationResolvers["approveOrganization"] = async (
   _root,
-  {input},
-  {stores, eventBus}
+  { input },
+  { stores, eventBus }
 ) => {
-  const {organizationId, approvalToken: inputToken, approver} = input;
-  const approversWhiteList = [process.env.APPROVER_EMAIL];
+  const { organizationId, approvalToken: inputToken, approver } = input;
+  const { APPROVER_EMAIL } = process.env;
+  const approversWhiteList = [APPROVER_EMAIL];
 
   const rawOrganization = (await stores.registry.fetch({
     organizationId,
@@ -32,7 +33,7 @@ const approveOrganization: MutationResolvers["approveOrganization"] = async (
     throw new Error(Errors.INVALID_APPROVER);
   }
 
-  const {approvalToken: storedToken, ...organization} = rawOrganization;
+  const { approvalToken: storedToken, ...organization } = rawOrganization;
 
   if (inputToken !== storedToken) {
     throw new Error(Errors.INVALID_APPROVAL_TOKEN);
@@ -43,7 +44,7 @@ const approveOrganization: MutationResolvers["approveOrganization"] = async (
     detail: {
       ...organization,
       status: OrganizationStatus.Approved,
-      approvedBy: "leonieke@publicspaces.net",
+      approvedBy: APPROVER_EMAIL,
       approvedOn: `${Date.now()}`,
     },
   }) as Promise<ApprovedOrganization>;
