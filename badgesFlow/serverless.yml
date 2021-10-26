@@ -60,6 +60,7 @@ functions:
             detail-type:
               - OPEN_BADGES_ARTIFACT_SIGNED
     environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
       APPROVER_EMAIL: ${self:custom.approver_email}
       HANDLER_NAME: ${self:custom.send_notifications}
       STATUS_CHANGED_TEMPLATE: ${self:custom.status_changed_template}

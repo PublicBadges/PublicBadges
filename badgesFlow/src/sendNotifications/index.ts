@@ -4,6 +4,7 @@ import {
   OpenBadgeArtifactSigned,
 } from "@public-badges/types";
 import { capitalize } from "voca";
+import { registry } from "@public-badges/stores";
 import { email } from "@public-badges/adapters";
 
 export type InputEvent = OpenBadgeArtifactSigned;
@@ -14,9 +15,12 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   detail,
 }) => {
   const approverEmail = process.env.APPROVER_EMAIL;
-  console.log(detail);
-  const { name, status } = detail;
+  const { name, status, recipientId } = detail;
   const { STATUS_CHANGED_TEMPLATE } = process.env;
+  const organization = await registry.fetch({
+    organizationId: recipientId,
+  });
+  console.log(organization);
   const badgeName = capitalize(name);
   const organizationName = capitalize(detail.name);
   switch (detailType) {
