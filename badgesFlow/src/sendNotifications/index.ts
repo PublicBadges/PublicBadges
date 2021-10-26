@@ -20,13 +20,16 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   const organization = await registry.fetch({
     organizationId: recipientId,
   });
-  console.log(organization);
   const badgeName = capitalize(name);
   const organizationName = capitalize(detail.name);
   switch (detailType) {
     case EV.OPEN_BADGES_ARTIFACT_SIGNED: {
       await email.sendTemplate({
-        recipients: [approverEmail],
+        recipients: [
+          organization.contact.email,
+          organization.admin.email,
+          approverEmail,
+        ],
         sender: approverEmail,
         templateName: STATUS_CHANGED_TEMPLATE,
         templateData: {
