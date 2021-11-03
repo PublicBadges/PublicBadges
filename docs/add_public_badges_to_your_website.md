@@ -5,23 +5,26 @@ Adding the Public Badges to your website is done by including the PublicBadges j
 ## Include javascript in your site/project
 Including PublicBadges javascript can be done by simply referencing the javascript via a script tag (see below for different hosting options) or include it into your project via npm.
 
-### via script tag
+### via script tags
 
 The javascript can be included from different sources.
 
 From CDN:
 ```html
-<script src="https://unpkg.com/@publicbadges/badge@latest/dist/publicbadges/publicbadges.js"></script>
+<script type="module" src="https://unpkg.com/@publicbadges/badge@latest/dist/publicbadges/publicbadges.esm.js"></script>
+<script nomodule src="https://unpkg.com/@publicbadges/badge@latest/dist/publicbadges/publicbadges.js"></script>
 ```
 
 From the Public Spaces server:
 ```html
-<script src="https://assets.publicspaces.net/@publicbadges/badge@latest/dist/publicbadges/publicbadges.js"></script>
+<script type="module" src="https://assets.publicspaces.net/@publicbadges/badge@latest/dist/publicbadges/publicbadges.esm.js"></script>
+<script nomodule src="https://assets.publicspaces.net/@publicbadges/badge@latest/dist/publicbadges/publicbadges.js"></script>
 ```
 
 Or [download](https://assets.publicspaces.net/@publicbadges/badge@latest.zip) the javascript files and host it on your own server. For example:
 ```html
-<script src="https://example.org/path/to/publicbadges-folder/publicbadges.js"></script>
+<script type="module" src="https://example.org/path/to/publicbadges-folder/publicbadges.esm.js"></script>
+<script nomodule src="https://example.org/path/to/publicbadges-folder/publicbadges.js"></script>
 ```
 
 ### Include javascript in your project from NPM:
@@ -71,3 +74,9 @@ The size can optionally be controled with css (default size is 120px, minimum si
 ```html
 <publicbadges-drawer style="width:150px; height:150px;" />
 ```
+
+## Browser support
+
+Older browsers may not support web components and thus not show the PublicBadges web component. Internet Explorer, Edge v. <79, Firefox v. <63, Chrome v. <67 and Safari v. <10.1 do not support web components. See [https://caniuse.com/custom-elementsv1](https://caniuse.com/custom-elementsv1) for a full overview of browser support.
+
+While it is possible to polyfill web component apis for older browsers, the PublicBadges web component may still not function properly as is has not been tested older browsers that don't support web components.
