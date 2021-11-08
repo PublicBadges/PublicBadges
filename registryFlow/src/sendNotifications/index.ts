@@ -59,7 +59,7 @@ const sendNotifications: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
         2
       );
       await email.sendTemplate({
-        recipients: [detail.contact.email, detail.admin.email],
+        recipients: [detail.contact.email, detail.admin.email, approverEmail],
         sender,
         templateName: APPROVED_REGISTRATION_TEMPLATE,
         templateData: {
