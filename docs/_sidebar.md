@@ -1,2 +1,2 @@
-- [Home](/)
-- [Hand Over](./hand_over.md)
+- [About Public Badges](/)
+- [Add Public Badges to your website](./add_public_badges_to_your_website.md)
